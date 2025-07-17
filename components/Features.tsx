@@ -29,13 +29,6 @@ export default function Features() {
     return () => observer.disconnect()
   }, [])
 
-  const openWhatsApp = () => {
-    const phone = siteConfig.contact.whatsapp
-    const message = `Olá! Quero saber mais sobre o ${siteConfig.property.type} em ${siteConfig.location.neighborhood}. ${siteConfig.cta.whatsapp}`
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
-    window.open(url, '_blank')
-  }
-
   return (
     <section id="features" className="section-padding bg-white" ref={sectionRef}>
       <div className="container-custom">
@@ -49,7 +42,7 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-8 hover:shadow-lg transition-shadow duration-300 border border-green-200" style={{ opacity: 0, transform: 'translateY(30px) translateZ(0)' }}>
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-ruler w-6 h-6 text-green-600">
@@ -138,33 +131,6 @@ export default function Features() {
               Conveniente
             </div>
           </div>
-        </div>
-
-        {/* Investment Highlight */}
-        <div className="mt-20 bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-8 lg:p-12 text-white" style={{ opacity: 0, transform: 'translateY(50px) translateZ(0)' }}>
-          <div className="text-center mb-8">
-            <h3 className="text-3xl lg:text-4xl font-bold mb-4">Investimento Inteligente</h3>
-            <p className="text-xl text-green-100">Terreno por {siteConfig.property.price} - Desconto de {siteConfig.property.discount}</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">{siteConfig.property.area}</div>
-              <div className="text-green-100">Área do Terreno</div>
-              <div className="text-2xl font-bold mt-2 text-green-300">{siteConfig.property.price}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">{siteConfig.location.neighborhood}</div>
-              <div className="text-green-100">Bairro Exclusivo</div>
-              <div className="text-2xl font-bold mt-2 text-green-300">{siteConfig.location.city}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">Condomínio</div>
-              <div className="text-green-100">Fechado</div>
-              <div className="text-2xl font-bold mt-2 text-green-300">Seguro</div>
-            </div>
-          </div>
-          
-
         </div>
       </div>
     </section>
