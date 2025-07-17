@@ -10,10 +10,34 @@
   
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
   }
   
   body {
     @apply bg-white text-gray-900;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Melhorar legibilidade em mobile */
+  @media (max-width: 768px) {
+    body {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  }
+
+  /* Otimizar toque em mobile */
+  button, a, [role="button"] {
+    @apply cursor-pointer;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Melhorar scroll em iOS */
+  * {
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -24,25 +48,158 @@
   
   .btn-primary {
     @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200;
+    @apply text-base sm:text-lg;
+    @apply w-full sm:w-auto;
+    @apply justify-center items-center;
+    @apply shadow-lg hover:shadow-xl;
+    @apply transform hover:scale-105;
   }
   
   .btn-secondary {
     @apply bg-white hover:bg-gray-50 text-primary-600 border border-primary-600 font-semibold py-3 px-6 rounded-lg transition-colors duration-200;
+    @apply text-base sm:text-lg;
+    @apply w-full sm:w-auto;
+    @apply justify-center items-center;
+    @apply shadow-md hover:shadow-lg;
+    @apply transform hover:scale-105;
   }
   
   .section-padding {
-    @apply py-16 lg:py-24;
+    @apply py-12 sm:py-16 lg:py-24;
   }
   
   .heading-primary {
-    @apply font-serif text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900;
+    @apply font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900;
+    @apply leading-tight;
+    @apply mb-4 sm:mb-6;
   }
   
   .heading-secondary {
-    @apply font-serif text-3xl lg:text-4xl font-bold text-gray-900;
+    @apply font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900;
+    @apply leading-tight;
+    @apply mb-3 sm:mb-4;
   }
   
   .text-body {
-    @apply text-lg text-gray-600 leading-relaxed;
+    @apply text-base sm:text-lg text-gray-600 leading-relaxed;
+    @apply mb-4;
+  }
+
+  /* Cards responsivos */
+  .card {
+    @apply bg-white rounded-xl shadow-lg p-6 sm:p-8;
+    @apply border border-gray-100;
+    @apply transition-all duration-300;
+    @apply hover:shadow-xl hover:scale-105;
+  }
+
+  /* Grid responsivo */
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8;
+  }
+
+  /* Espaçamento mobile-first */
+  .mobile-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .mobile-margin {
+    @apply mx-4 sm:mx-6 lg:mx-8;
+  }
+
+  /* Texto otimizado para mobile */
+  .text-mobile-optimized {
+    @apply text-sm sm:text-base lg:text-lg;
+    @apply leading-relaxed;
+  }
+
+  /* Botões mobile-friendly */
+  .btn-mobile {
+    @apply min-h-[48px] sm:min-h-[44px];
+    @apply px-6 sm:px-8;
+    @apply text-base sm:text-lg;
+    @apply font-semibold;
+    @apply rounded-lg;
+    @apply transition-all duration-200;
+    @apply active:scale-95;
+  }
+
+  /* Imagens responsivas */
+  .img-responsive {
+    @apply w-full h-auto;
+    @apply object-cover;
+    @apply rounded-lg;
+  }
+
+  /* Navegação mobile */
+  .nav-mobile {
+    @apply fixed top-0 left-0 right-0 z-50;
+    @apply bg-white/95 backdrop-blur-sm;
+    @apply border-b border-gray-200;
+  }
+
+  /* Hero mobile */
+  .hero-mobile {
+    @apply min-h-[60vh] sm:min-h-[70vh] lg:min-h-[80vh];
+    @apply flex flex-col justify-center;
+    @apply text-center;
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Call-to-action mobile */
+  .cta-mobile {
+    @apply fixed bottom-4 left-4 right-4 z-40;
+    @apply sm:relative sm:bottom-auto sm:left-auto sm:right-auto;
+    @apply bg-primary-600 text-white;
+    @apply rounded-full sm:rounded-lg;
+    @apply py-4 px-6;
+    @apply text-center font-bold;
+    @apply shadow-2xl;
+    @apply transform hover:scale-105;
+  }
+}
+
+/* Animações suaves */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Melhorar performance de scroll */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 } 
